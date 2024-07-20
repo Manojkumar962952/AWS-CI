@@ -1,5 +1,12 @@
 #!/bin/bash
 set -e
 
-dockercon='docker ps | awk -F '{print $1}''
-docker rmi -f $dockercon
+# Get container IDs
+dockercon=$(docker ps -q)
+
+# Remove all containers
+if [ -n "$dockercon" ]; then
+    docker rmi -f $dockercon
+else
+    echo "No running containers to remove."
+fi
