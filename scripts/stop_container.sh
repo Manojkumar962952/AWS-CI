@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 dockercon=$(docker ps | awk '{print $1}')
-docker rmi -f $dockercon
+docker rm -f $dockercon
 # Get container IDs
 #dockercon=$(docker ps -q)
 
